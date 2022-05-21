@@ -71,3 +71,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'devise', '~> 4.8.1'
+gem "haml-rails", '~> 2.0'
