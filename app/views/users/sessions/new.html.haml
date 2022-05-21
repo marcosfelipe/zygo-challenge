@@ -1,0 +1,16 @@
+%h2 Log in
+= form_for(resource, as: resource_name, url: user_session_path) do |f|
+  .input-field
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.label :email, for: :email
+  .input-field
+    = f.password_field :password, autocomplete: "current-password"
+    = f.label :password, for: :email
+  - if devise_mapping.rememberable?
+    .field
+      %label
+        = f.check_box :remember_me
+        %span Lembrar-me
+  .actions.mx-5
+    = button_tag "Log in", class: 'waves-effect waves-light btn'
+= render "users/shared/links"
