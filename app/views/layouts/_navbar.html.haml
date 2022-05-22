@@ -1,0 +1,11 @@
+%nav
+  .nav-wrapper
+    %a.brand-logo.left{ href: "/" } Books
+    %ul.right
+      %li 
+        - if user_signed_in?
+          = button_to 'sign out', destroy_user_session_path, 
+                      class: 'btn-logout',
+                      method: :delete, data: { turbo: false }
+        - else
+          = link_to 'Login', new_user_session_path
