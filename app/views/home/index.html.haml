@@ -1,1 +1,4 @@
-%h1 Home
+%h4 Home
+.row
+  - @books.each do |book|
+    = render 'books/book_card', book: book
