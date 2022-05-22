@@ -2,3 +2,11 @@
     margin-top: 5px; 
     margin-bottom: 5px; 
 }
+
+.btn-logout {
+    border: none;
+    background: none;
+    color: white;
+    height: 50px;
+    cursor: pointer;
+}
