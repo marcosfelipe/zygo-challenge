@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :load_book, only: %i[edit update]
+  
   def new
     @book = Book.new
   end
@@ -15,9 +17,24 @@ class BooksController < ApplicationController
     render(:new, status: :unprocessable_entity)
   end
   
+  def edit
+  end
+
+  def update
+    @book.update!(book_params)
+    flash.now[:notice] = 'Book saved!'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:alert] = 'Could not save the book'
+    render(:edit, status: :unprocessable_entity)
+  end
+  
   private 
   
   def book_params
     params.require(:book).permit(:description, :title, :author, :picture)
+  end
+  
+  def load_book
+    @book = Book.find(params[:id])
   end
 end
