@@ -1,7 +1,16 @@
 %h4 Home
-.row
-  - @books.each do |book|
-    = render 'books/book_card', book: book
+= form_tag root_path, data: { turbo_frame: 'book-list', turbo_action: :advance }, method: :get do
+  .row
+    .col.s9
+      .input-field
+        = text_field_tag :search
+        %label{ for: :search } Search key
+    .col.s3
+      .input-field= button_tag 'Search', class: 'btn grey black-text lighten-4'
+= turbo_frame_tag 'book-list' do
+  .row
+    - @books.each do |book|
+      = render 'books/book_card', book: book
 - if user_signed_in?
   .fixed-action-btn
     = link_to(new_book_path, class: 'btn-floating btn-large waves-effect waves-light red', 
