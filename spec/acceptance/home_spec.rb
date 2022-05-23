@@ -14,4 +14,16 @@ RSpec.describe 'home', type: :feature do
     visit(root_path)
     expect(page).to have_content('Title: Test')
   end
+  
+  scenario 'logged user can open the new book form' do
+    user = FactoryBot.create(:user)
+    visit '/sign_in'
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    click_on 'Log in'
+    visit(root_path)
+    expect(page).to have_content('sign out')
+    click_on class: 'btn-floating'
+    expect(page).to have_content('New Book')
+  end
 end
