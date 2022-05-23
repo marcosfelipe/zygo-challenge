@@ -1,0 +1,14 @@
+= turbo_frame_tag :modal do
+  .modal.modal-fixed-footer{ data: { controller: :modal, action: 'turbo:submit-end->modal#submitEnd' } }
+    = form_for(@book, class: 'col s12') do |form|
+      .modal-content
+        = render('layouts/flash')
+        %h4 New Book
+        = input_text form, :title
+        = input_text form, :author
+        = input_text form, :description
+        = input_text form, :picture
+      .modal-footer.mx-5
+        = link_to 'Cancel', '#', class: 'modal-close waves-effect waves-green btn-flat'
+        = form.submit 'Save', class: 'waves-effect waves-light btn'
+          
