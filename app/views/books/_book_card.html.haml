@@ -8,7 +8,7 @@
         %i.material-icons.right more_vert
       %small= book.author
     .card-action
-      %a{ href: '#' } Edit
+      = link_to 'Edit', edit_book_path(book), data: { turbo_frame: :modal }
       %a{ href: '#' } Remove
     .card-reveal
       %span.card-title.grey-text.text-darken-4
