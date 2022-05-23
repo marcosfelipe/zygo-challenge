@@ -13,7 +13,7 @@
     = javascript_importmap_tags
   %body
     = render 'layouts/navbar'
-    = render 'layouts/flash'
+    #flash= render 'layouts/flash'
     .container
       = yield
     = turbo_frame_tag :modal

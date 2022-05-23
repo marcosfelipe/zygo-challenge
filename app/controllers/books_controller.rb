@@ -6,7 +6,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.save!
-    head(:ok)
+    respond_to do |format|
+      format.html { redirect_to(root_path, notice: 'Book saved!') }
+      format.turbo_stream { flash.now[:notice] = 'Book saved!' }
+    end
   rescue ActiveRecord::RecordInvalid
     flash.now[:alert] = 'Could not save the book'
     render(:new, status: :unprocessable_entity)
