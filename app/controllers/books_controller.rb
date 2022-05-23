@@ -29,8 +29,8 @@ class BooksController < ApplicationController
   end
   
   def destroy
-    flash.now[:notice] = 'Book removed!'
     @book.destroy!
+    flash.now[:notice] = 'Book removed!'
   end
   
   private 
