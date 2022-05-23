@@ -1,4 +1,4 @@
-.col.s12.m4.l4
+.col.s12.m4.l4{ id: dom_id(book) }
   .card.grey.lighten-4
     .card-image.waves-effect.waves-block.waves-light
       = image_tag(book.picture_url, class: 'activator', height: 200)
@@ -8,8 +8,8 @@
         %i.material-icons.right more_vert
       %small= book.author
     .card-action
-      = link_to 'Edit', edit_book_path(book), data: { turbo_frame: :modal }
-      %a{ href: '#' } Remove
+      = link_to 'Edit', edit_book_path(book), data: { turbo_frame: :modal }, class: 'btn-flat blue-text'
+      = button_to 'Remove', book_path(book), method: :delete, class: 'btn-flat blue-text'
     .card-reveal
       %span.card-title.grey-text.text-darken-4
         Title: #{book.title}

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :load_book, only: %i[edit update]
+  before_action :load_book, only: %i[edit update destroy]
   
   def new
     @book = Book.new
@@ -26,6 +26,11 @@ class BooksController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     flash.now[:alert] = 'Could not save the book'
     render(:edit, status: :unprocessable_entity)
+  end
+  
+  def destroy
+    flash.now[:notice] = 'Book removed!'
+    @book.destroy!
   end
   
   private 
