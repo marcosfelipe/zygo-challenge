@@ -76,3 +76,4 @@ end
 
 gem 'devise', '~> 4.8.1'
 gem "haml-rails", '~> 2.0'
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
