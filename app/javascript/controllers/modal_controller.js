@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect(){
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, {});
+    var elems = document.querySelectorAll('.modal')
+    var instances = M.Modal.init(elems, {})
     this.modal = instances[0]
     this.modal.open()
+    M.updateTextFields()
   }
 
   submitEnd(event){
