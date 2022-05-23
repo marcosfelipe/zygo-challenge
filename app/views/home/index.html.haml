@@ -2,3 +2,8 @@
 .row
   - @books.each do |book|
     = render 'books/book_card', book: book
+- if user_signed_in?
+  .fixed-action-btn
+    = link_to(new_book_path, class: 'btn-floating btn-large waves-effect waves-light red', 
+              data: { turbo_frame: :modal }) do
+      %i.material-icons add
