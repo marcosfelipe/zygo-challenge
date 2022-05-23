@@ -1,0 +1,8 @@
+.input-field.file-field
+  .btn
+    %span= field_name.capitalize
+    = form.file_field(field_name)
+  .file-path-wrapper
+    = text_field_tag :file_path, nil, class: 'file-path'
+  = input_errors_for(form, field_name)
+  

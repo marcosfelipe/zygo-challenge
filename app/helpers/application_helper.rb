@@ -13,4 +13,8 @@ module ApplicationHelper
       concat input_errors_for(form, field_name)
     end
   end
+  
+  def input_file(form, field_name)
+    render('layouts/form/input_file', form: form, field_name: field_name)
+  end
 end
