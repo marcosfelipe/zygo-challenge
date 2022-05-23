@@ -10,3 +10,7 @@
     height: 50px;
     cursor: pointer;
 }
+
+form.button_to {
+    display: inline-block;
+}
