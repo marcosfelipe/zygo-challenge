@@ -7,9 +7,10 @@
         = book.title
         %i.material-icons.right more_vert
       %small= book.author
-    .card-action
-      = link_to 'Edit', edit_book_path(book), data: { turbo_frame: :modal }, class: 'btn-flat blue-text'
-      = button_to 'Remove', book_path(book), method: :delete, class: 'btn-flat blue-text'
+    - if user_signed_in?
+      .card-action
+        = link_to 'Edit', edit_book_path(book), data: { turbo_frame: :modal }, class: 'btn-flat blue-text'
+        = button_to 'Remove', book_path(book), method: :delete, class: 'btn-flat blue-text'
     .card-reveal
       %span.card-title.grey-text.text-darken-4
         Title: #{book.title}
