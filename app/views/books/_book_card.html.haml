@@ -14,14 +14,14 @@
             = link_to edit_book_path(book), data: { turbo_frame: :modal }, class: 'btn-flat black-text' do
               %i.material-icons edit
           .col.s4.l4.m4
-            = button_to book_path(book), method: :delete, class: 'btn-flat' do
+            = link_to book_path(book), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-flat black-text' do
               %i.material-icons delete
           .col.s4.l4.m4
             - if current_user.favorite_book?(book)
-              = button_to destroy_favorite_books_path(book), method: :delete, class: 'btn-flat red-text' do
+              = link_to destroy_favorite_books_path(book), data: { turbo_method: :delete }, class: 'btn-flat red-text' do
                 %i.material-icons favorite
             - else
-              = button_to create_favorite_books_path(book), method: :post, class: 'btn-flat' do
+              = link_to create_favorite_books_path(book), data: { turbo_method: :post }, class: 'btn-flat black-text' do
                 %i.material-icons favorite_border
     .card-reveal
       %span.card-title.grey-text.text-darken-4
