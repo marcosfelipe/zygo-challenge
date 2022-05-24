@@ -43,6 +43,14 @@ RSpec.describe 'home', type: :feature, js: true do
       click_on 'Save'
       expect(page).to have_content('Book saved!')
     end
+
+    scenario 'create returns invalid book' do
+      click_on class: 'btn-floating'
+      expect(page).to have_content('New Book')
+      fill_in :book_description, with: ''
+      click_on 'Save'
+      expect(page).to have_content('Could not save the book')
+    end
     
     scenario 'user can go to favorites page' do 
       click_on 'Favorites'
@@ -56,9 +64,18 @@ RSpec.describe 'home', type: :feature, js: true do
     
     scenario 'user can update a book' do
       click_on 'edit'
+      expect(page).to have_content('Edit Book')
       fill_in :book_title, with: 'new title'
       click_on 'Save'
       expect(page).to have_content('Book saved!')
+    end
+
+    scenario 'update returns invalid book' do
+      click_on 'edit'
+      expect(page).to have_content('Edit Book')
+      fill_in :book_description, with: ''
+      click_on 'Save'
+      expect(page).to have_content('Could not save the book')
     end
     
     scenario 'user can favorite a book' do
