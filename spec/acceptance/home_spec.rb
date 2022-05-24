@@ -60,6 +60,10 @@ RSpec.describe 'home', type: :feature, js: true do
       click_on 'Save'
       expect(page).to have_content('Book saved!')
     end
+    
+    scenario 'user can favorite a book' do
+      click_on 'favorite_border'
+      expect(page).to have_link('favorite', class: 'btn-flat red-text')
+    end
   end
-  # TODO: favorite books
 end
