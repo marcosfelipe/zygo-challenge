@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'home', type: :feature, js: true do
   setup do
-    Book.create!(title: 'Test', description: 'test', 
+    @book = Book.create!(title: 'Test', description: 'test', 
                  picture: fixture_file_upload('dummy.png'), 
                  author: 'test')
   end
@@ -64,6 +64,14 @@ RSpec.describe 'home', type: :feature, js: true do
     scenario 'user can favorite a book' do
       click_on 'favorite_border'
       expect(page).to have_link('favorite', class: 'btn-flat red-text')
+    end
+    
+    scenario 'user can remove a book' do
+      accept_confirm do
+        click_on 'delete'
+      end
+      expect(page).to_not have_selector("#book_#{@book_id}")
+      expect(page).to have_content('Book removed!')
     end
   end
 end
