@@ -41,7 +41,7 @@ RSpec.describe 'home', type: :feature do
     fill_in :book_description, with: 'test'
     fill_in :book_author, with: 'test'
     fill_in :book_title, with: 'test'
-    attach_file 'book_picture', Rails.root.join('spec', 'fixtures', 'files', 'dummy.png')
+    attach_file 'book[picture]', Rails.root.join('spec', 'fixtures', 'files', 'dummy.png'), make_visible: true
     click_on 'Save'
     expect(page).to have_content('Book saved!')
   end
