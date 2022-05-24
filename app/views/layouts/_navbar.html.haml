@@ -2,10 +2,12 @@
   .nav-wrapper.teal
     %a.brand-logo.left{ href: "/" } Books
     %ul.right
-      %li 
-        - if user_signed_in?
+      %li= link_to 'Books', root_path, data: { turbo: false }
+      - if user_signed_in?
+        %li= link_to 'Favorites', favorite_books_path, data: { turbo: false }
+        %li 
           = button_to 'sign out', destroy_user_session_path, 
                       class: 'btn-logout',
                       method: :delete, data: { turbo: false }
-        - else
-          = link_to 'Login', new_user_session_path
+      - else
+        %li= link_to 'Login', new_user_session_path
