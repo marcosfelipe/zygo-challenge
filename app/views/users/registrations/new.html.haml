@@ -1,0 +1,14 @@
+%h2 Sign up
+= form_for(resource, as: resource_name, url: user_registration_path, html: { 'data-turbo': false }, autocomplete: false) do |f|
+  .input-field
+    = input_text f, :email
+  .input-field
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    = input_password f, :password
+  .input-field
+    = input_password f, :password_confirmation
+  .actions.mx-5
+    = f.submit "Sign up", class: 'btn'
+= render "users/shared/links"
