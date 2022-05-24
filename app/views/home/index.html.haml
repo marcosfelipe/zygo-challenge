@@ -10,7 +10,7 @@
         = select_tag :sort, options_for_select(['asc', 'desc'])
         %label Sort
     .col.s3
-      .input-field= button_tag 'Search', class: 'btn grey black-text lighten-4'
+      .input-field= button_tag 'Filter', class: 'btn grey black-text lighten-4'
 = turbo_frame_tag 'book-list' do
   .row
     - @books.each do |book|
