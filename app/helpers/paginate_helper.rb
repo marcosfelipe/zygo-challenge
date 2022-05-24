@@ -13,11 +13,6 @@ module PaginateHelper
         end
       end
   
-      def gap
-        text = @template.will_paginate_translate(:page_gap) { '&hellip;' }
-        %(<span class="mr2">#{text}</span>)
-      end
-  
       def previous_page
         num = @collection.current_page > 1 && @collection.current_page - 1
         previous_or_next_page(num, '<', '')
