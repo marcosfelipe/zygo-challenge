@@ -11,6 +11,8 @@
   .row
     - @books.each do |book|
       = render 'books/book_card', book: book
+  = paginate_links @books
+  = page_entries_info @books
 - if user_signed_in?
   .fixed-action-btn
     = link_to(new_book_path, class: 'btn-floating btn-large waves-effect waves-light red', 
