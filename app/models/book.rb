@@ -4,5 +4,8 @@ class Book < ApplicationRecord
 
   mount_uploader :picture, BookPictureUploader
   
-  scope :paginate_search, -> (params = {}) { search(params[:search]).paginate(page: params[:page]) }
+  def self.paginate_search(params = {}) 
+    direction = params[:sort] || :desc
+    search(params[:search]).paginate(page: params[:page]).order(title: direction)
+  end
 end
