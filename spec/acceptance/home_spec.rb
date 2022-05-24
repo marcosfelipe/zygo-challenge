@@ -17,6 +17,21 @@ RSpec.describe 'home', type: :feature, js: true do
     expect(page).to have_content('Test')
   end
   
+  describe 'pagination' do
+    before { FactoryBot.create_list(:book, 15) }
+    
+    scenario 'user can see the page with max of 10 books per page' do
+      visit(root_path)
+      expect(page).to have_content('Displaying Book 1 - 10 of 16 in total')
+    end
+    
+    scenario 'user can go to page 2' do
+      visit(root_path)
+      find('a', text: '2').click
+      expect(page).to have_content('Displaying Book 11 - 16 of 16 in total')
+    end
+  end
+  
   context 'logged user' do
     before do
       user = FactoryBot.create(:user)

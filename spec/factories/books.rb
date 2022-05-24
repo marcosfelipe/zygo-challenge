@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :book do
-    id {1}
     title { 'book' }
     description { 'book desc' }
     author { 'book author' }
