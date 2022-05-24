@@ -14,7 +14,7 @@ RSpec.describe 'home', type: :feature do
   
   scenario 'anonymous user visualizes the book list' do
     visit(root_path)
-    expect(page).to have_content('Title: Test')
+    expect(page).to have_content('Test')
   end
   
   scenario 'logged user can open the new book form' do
