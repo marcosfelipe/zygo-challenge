@@ -9,6 +9,10 @@ class FavoriteBooksController < ApplicationController
     current_user.books.destroy(book)
   end
   
+  def index
+    @books = current_user.books.paginate_search(params)
+  end
+  
   private 
   
   attr_reader :book
