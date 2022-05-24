@@ -83,6 +83,13 @@ RSpec.describe 'home', type: :feature, js: true do
       expect(page).to have_link('favorite', class: 'btn-flat red-text')
     end
     
+    scenario 'user can remove favorite book' do
+      click_on 'favorite_border'
+      expect(page).to have_link('favorite', class: 'btn-flat red-text')
+      click_on 'favorite'
+      expect(page).to have_link('favorite_border', class: 'btn-flat black-text')
+    end
+    
     scenario 'user can remove a book' do
       accept_confirm do
         click_on 'delete'
