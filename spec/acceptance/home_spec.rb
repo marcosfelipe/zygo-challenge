@@ -43,6 +43,11 @@ RSpec.describe 'home', type: :feature, js: true do
       click_on 'Save'
       expect(page).to have_content('Book saved!')
     end
+    
+    scenario 'user can go to favorites page' do 
+      click_on 'Favorites'
+      expect(page).to have_current_path(favorite_books_path)
+    end
   end
   
   # TODO: add test for edit/update
