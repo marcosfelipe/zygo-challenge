@@ -1,0 +1,7 @@
+= turbo_frame_tag 'book-list' do
+  .row
+    - books.each do |book|
+      = render 'books/book_card', book: book
+  = paginate_links books
+  = page_entries_info books
+  

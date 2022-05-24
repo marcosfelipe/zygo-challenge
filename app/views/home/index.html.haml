@@ -1,11 +1,6 @@
 %h4 Home
 = render 'filter_form'
-= turbo_frame_tag 'book-list' do
-  .row
-    - @books.each do |book|
-      = render 'books/book_card', book: book
-  = paginate_links @books
-  = page_entries_info @books
+= render 'book_list', books: @books
 - if user_signed_in?
   .fixed-action-btn
     = link_to(new_book_path, class: 'btn-floating btn-large waves-effect waves-light red', 
