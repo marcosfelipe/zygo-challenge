@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'home', type: :feature do
+RSpec.describe 'home', type: :feature, js: true do
   setup do
     Book.create!(title: 'Test', description: 'test', 
                  picture: fixture_file_upload('dummy.png'), 

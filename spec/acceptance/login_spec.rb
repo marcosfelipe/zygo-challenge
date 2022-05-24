@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'login', type: :feature do
+RSpec.describe 'login', type: :feature, js: true do
   scenario('login page') do
     visit('/sign_in')
     expect(page).to have_content('Log in')
