@@ -32,6 +32,26 @@ RSpec.describe 'home', type: :feature, js: true do
     end
   end
   
+  describe 'filter' do
+    scenario 'user can filter by title name' do
+      book = FactoryBot.create(:book, :other_title)
+      visit(root_path)
+      fill_in :search, with: book.title
+      click_on 'Filter'
+      expect(page).to have_content(book.title)
+      expect(page).to have_content('Displaying 1 Book')
+    end
+    
+    scenario 'user can filter by author' do
+      book = FactoryBot.create(:book)
+      visit(root_path)
+      fill_in :search, with: book.author
+      click_on 'Filter'
+      expect(page).to have_content(book.author)
+      expect(page).to have_content('Displaying 1 Book')
+    end
+  end
+  
   context 'logged user' do
     before do
       user = FactoryBot.create(:user)
